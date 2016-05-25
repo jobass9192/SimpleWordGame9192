@@ -16,12 +16,6 @@ function changeScore(s) {
   $("#score").text("Score: " + score);
 }
 
-function saveScore(name, score) {
-  $.ajax( { url: "/save_score?name=" + name + "&score=" + score, cache : false }).done(function(data) {    
-    window.location.replace("/"); // Go to hiscore page
-  });
-}
-
 function changePower(p) {
   power += p;
   if (power > 100) {
@@ -42,6 +36,12 @@ function changePower(p) {
     dlg.modal("show");
   }	
   $("#power").text("Power: " + power);
+}
+
+function saveScore(name, score) {
+  $.ajax({url: "/save_score?name=" + name + "&score=" + score, cache : false}).done(function(data) {
+    window.location.replace("/"); // Go to hiscore page
+  });
 }
 
 function showLetters() {
